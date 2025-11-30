@@ -15,7 +15,8 @@ const Sidebar = () => {
 
       <div className="top">
    
-        <img className='menu' src={assets.menu_icon} alt="" />
+        <img onClick={()=> setExtended(prev=>!prev)
+        } className='menu' src={assets.menu_icon} alt="" />
        
         <div className="new-chat">
             <img className='plus' src={assets.plus_icon} alt="" />
