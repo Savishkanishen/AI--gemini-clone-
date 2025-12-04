@@ -7,7 +7,7 @@ import {
 const MODEL_NAME = "gemini-2.0-flash";
 // 1. ✅ FIX: Using your new, valid API key.
 //    (Note: In a real app, this should be an environment variable for security)
-const API_KEY = "AIzaSyAOEEhzSk9Vtq5rGmwn9drrJ8b_obm8LJM";
+const API_KEY = "AIzaSyC7DvMl8WnWecBgEFMLgMLAC644uJ0k-0c";
 
 async function runChat(prompt) {
   // 2. ✅ FIX: Passing the API key correctly as the first argument (a string).
@@ -51,6 +51,7 @@ async function runChat(prompt) {
   const result = await chat.sendMessage(prompt);
   const response = result.response;
   console.log(response.text());
+  return response.text();
 }
 
 export default runChat;

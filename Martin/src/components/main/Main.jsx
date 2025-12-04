@@ -2,10 +2,10 @@ import React from 'react'
 import './main.css'
 import { assets } from '../../assets/assets'
 import { Context } from '../../context/context';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+
 
 const Main = () => {
-const {onSent,recentPrompt,showResult,loading,resultData,input,setInput} = React.useContext(Context);
+const {onSent,recentPrompt,showResult,loading,resultData,setInput,input} = React.useContext(Context);
 
   return (
    <div className='main'>
@@ -14,6 +14,9 @@ const {onSent,recentPrompt,showResult,loading,resultData,input,setInput} = React
         <img src={assets.user_icon} alt="" />
     </div>
     <div className="main-container">
+
+        {!showResult
+        ?<> 
         <div className="greet">
             <p><span> Hello...Boss</span></p>
             <p>How can i help you </p>
@@ -36,6 +39,31 @@ const {onSent,recentPrompt,showResult,loading,resultData,input,setInput} = React
                 <img src={assets.code_icon} alt="" />
             </div>
         </div>
+        </>
+
+        :<div className="result">
+            <div className="result-title">
+                <img src={assets.user_icon} alt="" />
+                <p>{recentPrompt}</p>
+            </div>
+
+            <div className="result-data">
+                <img src={assets.gemini_icon} alt="" />
+                {loading ? 
+                <div className='loader'>
+                    <hr />
+                    <hr />
+                    <hr />
+                </div>
+                :<p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                }
+            </div>
+
+        </div>
+}
+            
+
+        
         
         <div className="main-bottom">
             <div className="search-box">
@@ -44,7 +72,7 @@ const {onSent,recentPrompt,showResult,loading,resultData,input,setInput} = React
              <div>
                  <img src={assets.gallery_icon} alt="" />
                 <img src={assets.mic_icon} alt="" />
-                <img onClick={() =>onSent()} src={assets.send_icon} alt="" />
+               {input? <img onClick={() =>onSent()} src={assets.send_icon} alt="" />:null}
              </div>
                
              
